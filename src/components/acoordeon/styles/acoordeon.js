@@ -16,18 +16,14 @@ export const Inner = styled.div`
 export const Item = styled.div`
     color: white;
     margin-bottom: 10px;
-    max-width: 620px;
+    margin: auto;
+    max-width: 670px;
+    width: 100%;
 
     &:first-of-type {
         margin-top: 3em;
     }
 `;
-
-export const Frame = styled.div`
-    margin-bottom: 40px;
-`;
-
-
 
 export const Header = styled.div`
     display: flex;

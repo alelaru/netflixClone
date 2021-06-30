@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import {Inner, Container, Frame, Title, Header, Item, Body } from "./styles/acoordeon"
+import {Inner, Container, Title, Header, Item, Body } from "./styles/acoordeon"
 
 
 const toggleContext = createContext();
@@ -16,10 +16,6 @@ export default Acoordion;
 
 Acoordion.Title = function AcoordionTitle({children, ...restProps}){
     return <Title {...restProps}>{children}</Title>
-}
-
-Acoordion.Frame = function AcoordionFrame({children, ...restProps}){
-    return <Frame {...restProps}>{children}</Frame>
 }
 
 Acoordion.Item = function AcoordionItem({children, ...restProps}){
