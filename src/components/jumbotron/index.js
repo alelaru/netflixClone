@@ -3,8 +3,8 @@ import {Inner, Container, Pane, Title, SubTitle, Image, Item} from "./styles/jum
 
 const Jumbotron = ({children, direction = 'row', ...restProps}) => {
     return ( 
-        <Item direction={direction}>
-            <Inner>{children}</Inner>
+        <Item>
+            <Inner direction={direction}>{children}</Inner>
         </Item>
         );
 }
