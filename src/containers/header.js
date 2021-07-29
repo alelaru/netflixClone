@@ -1,14 +1,15 @@
-import { Header } from "../components/acoordeon/styles/acoordeon"
+import Header  from "../components/header"
+import * as ROUTES from "../constants/routes"
 
-
-const HeaderContainer = () => {
+export const HeaderContainer = ( {children }) => {
     return ( 
         <Header>
-            <Header.Title>
-                
-            </Header.Title>
+            <Header.Frame>
+                <Header.Logo />
+                <Header.ButtonLink to={ROUTES.SIGNIN}>Sign In</Header.ButtonLink>
+            </Header.Frame>
+            {children}
         </Header>
      );
 }
  
-export default HeaderContainer;

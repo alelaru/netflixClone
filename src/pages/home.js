@@ -6,13 +6,15 @@ import { FooterContainer } from '../containers/footer';
 import { JumbotronContainer } from "../containers/jumbotron"
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import * as ROUTES from "../constants/routes"
+import {HeaderContainer} from '../containers/header';
 
 export default function Home() {
   return (
     <Router>
       <Route exact path={ROUTES.HOME}>
+        <HeaderContainer />
         <JumbotronContainer></JumbotronContainer>
-          <FaqsContainer></FaqsContainer>
+        <FaqsContainer></FaqsContainer>
         <FooterContainer></FooterContainer>
       </Route>
     </Router>
