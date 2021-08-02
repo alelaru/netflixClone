@@ -4,22 +4,25 @@ import React from 'react';
 import FaqsContainer from '../containers/faqs';
 import { FooterContainer } from '../containers/footer';
 import { JumbotronContainer } from "../containers/jumbotron"
-import { BrowserRouter as Router, Route} from "react-router-dom";
-import * as ROUTES from "../constants/routes"
 import {HeaderContainer} from '../containers/header';
 import OptForm from "../components/opt-form"
+import Feature from "../components/feature"
 
 
 export default function Home() {
   return (
     <>
         <HeaderContainer>
-        <OptForm>
-            <OptForm.Input placeholder="Email address" />
-            <OptForm.Button>Try it now</OptForm.Button>
-            <OptForm.Break />
-            <OptForm.Text>Ready to watch? Enter your email to create or restart your membership.</OptForm.Text>
-          </OptForm>
+            <Feature>
+              <Feature.Title>Unlimited films, tv, programs and more</Feature.Title>
+              <Feature.Subtitle>Watch anywhere and cancel anytime</Feature.Subtitle>
+              <OptForm>
+                <OptForm.Input placeholder="Email address" />
+                <OptForm.Button>Try it now</OptForm.Button>
+                <OptForm.Break />
+                <OptForm.Text>Ready to watch? Enter your email to create or restart your membership.</OptForm.Text>
+              </OptForm>
+            </Feature>
         </HeaderContainer>
         <JumbotronContainer></JumbotronContainer>
         <FaqsContainer></FaqsContainer>
