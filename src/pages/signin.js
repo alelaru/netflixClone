@@ -1,15 +1,20 @@
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useHistory } from 'react-router';
 import Form from '../components/form';
 import { FooterContainer } from '../containers/footer';
 import {HeaderContainer} from '../containers/header';
+import FirebaseContext from '../context/firebase';
+import * as ROUTES from "../constants/routes"
 
 
 const SignIn = () => {
 
+    const history = useHistory()
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const { firebase } = useContext(FirebaseContext);
 
     //Check form input elements are valid
     //email and password
@@ -17,7 +22,19 @@ const SignIn = () => {
     const handleSignIn = (event) => {
         event.preventDefault();
         
-        //Firebase work here
+        //firebase work here
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(emailAddress, password)
+            .then(() => {
+                //Push to the browse page
+                history.push(ROUTES.BROWSE)
+            })
+            .catch(error => {
+                setEmailAddress("");
+                setPassword("")
+                setError(error.message)
+            })
     }
 
     //Just if they have a password and emailAddress with some info
@@ -35,7 +52,7 @@ const SignIn = () => {
                     <Form.Submit disabled={isInvalid} type="submit">Sign In</Form.Submit>
                 </Form.Base>
                 <Form.Text>
-                    New to Netflix? <Form.Link to="/signup">Sign Up now.</Form.Link>
+                    New to Netflix? <Form.Link to={ROUTES.SIGNIN}>Sign Up now.</Form.Link>
                 </Form.Text> 
                 <Form.TextSmall>
                     This page is protected by Google Recaptcha to ensure you are not a bot
