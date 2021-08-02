@@ -17,6 +17,7 @@ const SignIn = () => {
     const handleSignIn = (event) => {
         event.preventDefault();
         
+        //Firebase work here
     }
 
     //Just if they have a password and emailAddress with some info
@@ -27,7 +28,7 @@ const SignIn = () => {
         <HeaderContainer>
             <Form>
                 <Form.Title>Sign In</Form.Title>
-                {error & <Form.Error>{error}</Form.Error>}
+                {error && <Form.Error>{error}</Form.Error>}
                 <Form.Base onSubmit={handleSignIn} method="POST">
                     <Form.Input placeholder="Email Address" value={emailAddress} onChange={({target}) => setEmailAddress(target.value)}></Form.Input>
                     <Form.Input placeholder="Password" autocomplete="off" type="password" value={password} onChange={({target}) => setPassword(target.value)}></Form.Input>
