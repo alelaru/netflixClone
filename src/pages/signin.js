@@ -7,8 +7,8 @@ import {HeaderContainer} from '../containers/header';
 
 const SignIn = () => {
 
-    const [emailAddress, setEmailAddress] = useState();
-    const [password, setPassword] = useState();
+    const [emailAddress, setEmailAddress] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
     //Check form input elements are valid
@@ -33,7 +33,13 @@ const SignIn = () => {
                     <Form.Input placeholder="Email Address" value={emailAddress} onChange={({target}) => setEmailAddress(target.value)}></Form.Input>
                     <Form.Input placeholder="Password" autocomplete="off" type="password" value={password} onChange={({target}) => setPassword(target.value)}></Form.Input>
                     <Form.Submit disabled={isInvalid} type="submit">Sign In</Form.Submit>
-                </Form.Base>    
+                </Form.Base>
+                <Form.Text>
+                    New to Netflix? <Form.Link to="/signup">Sign Up now.</Form.Link>
+                </Form.Text> 
+                <Form.TextSmall>
+                    This page is protected by Google Recaptcha to ensure you are not a bot
+                </Form.TextSmall>
             </Form>    
         </HeaderContainer> 
         <FooterContainer></FooterContainer>
