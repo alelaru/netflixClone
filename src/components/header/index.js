@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Logo, Background, ButtonLink, Feature, Text, FeatureCallOut, Link, Group, Picture, Profile, Dropdown } from './styles/header';
+import React, { useState } from 'react';
+import { Container, Logo, Background, ButtonLink, Feature, Text, FeatureCallOut, Link, Group, Picture, Profile, SearchInput, Dropdown, Search, SearchIcon } from './styles/header';
 import {Link as ReactRouterLink} from "react-router-dom";
 
 
@@ -15,14 +15,33 @@ Header.Profile = function HeaderProfile({children, ...restProps}){
     return <Profile {...restProps}>{children}</Profile>
 }
 
+Header.Picture = function HeaderPicture({src, ...restProps}){
+    return <Picture {...restProps} src={`images/users/${src}.png`}></Picture>
+}
+
 Header.Dropdown = function HeaderDropdown({children, ...restProps}){
     return <Dropdown {...restProps}>{children}</Dropdown>
 }
 
+Header.Search = function HeaderSearch({searchTerm, setSearchTerm, ...restProps}){
+    const [searchActive, setsearchActive] = useState(false);
 
-Header.Picture = function HeaderPicture({src, ...restProps}){
-    return <Picture {...restProps} src={`images/users/${src}.png`}></Picture>
+
+
+    return (
+        <Search {...restProps}>
+            <SearchIcon onClick={() => setsearchActive(searchActive => !searchActive)}>
+                <img src={`/images/icons/search.png`} alt="search"></img>
+            </SearchIcon>    
+            <SearchInput value={searchTerm} onChange={({target}) => setSearchTerm(target.value)} placeholder="Search films and series" active={searchActive}> 
+            </SearchInput>
+        </Search>
+
+    )
+    
 }
+
+
 
 Header.Feature = function HeaderFeature({children, ...restProps}){
     return <Feature {...restProps}>{children}</Feature>
