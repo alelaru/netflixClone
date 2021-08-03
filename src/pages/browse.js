@@ -1,3 +1,4 @@
+import BrowserContainer from "../containers/browse";
 import useContent from "../hooks/use-content";
 import selectionFilter from "../utils/selection-map";
 
@@ -7,12 +8,12 @@ const Browse = () => {
     const { series } = useContent("series");
     const { films } = useContent("films");
 
-    //We need slides 
+    //We need slides we added the genre
     const slides = selectionFilter({series, films})
-    console.log(slides);
+    // console.log(slides);
 
     //pass it to the browser container
-    return ( <p>Hello from the Browse</p> );
+    return ( <BrowserContainer slides={slides}></BrowserContainer> );
 }
  
 export default Browse;
