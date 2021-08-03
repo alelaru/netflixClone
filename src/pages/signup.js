@@ -9,9 +9,9 @@ import * as ROUTES from "../constants/routes"
 const Signup = () => {
     const history = useHistory();
     const { firebase } = useContext(FirebaseContext)
-    const [firstName, setFirstName] = useState();
-    const [emailAddress, setEmailAddress] = useState();
-    const [password, setPassword] = useState();
+    const [firstName, setFirstName] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState();
 
     const isInvalid = firstName === "" || password === "" || emailAddress === "";
@@ -20,6 +20,24 @@ const Signup = () => {
         e.preventDefault();
         
         //do firebase stuff
+        firebase
+        .auth()
+        .createUserWithEmailAndPassword(emailAddress, password)
+        .then((res) => {
+            res.user
+            .updateProfile({
+                displayName:firstName,
+                photoUrl: Math.floor(Math.random() * 5) + 1,
+            }).then(() => {
+                history.push(ROUTES.BROWSE)
+            })
+        }).catch(error => {
+            setEmailAddress("")
+            setPassword("")
+            setFirstName("")
+            setError(error.message)
+        })
+        
     }
 
     return ( 
