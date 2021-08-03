@@ -23,8 +23,8 @@ const BrowserContainer = ( {slides }) => {
 
     return (  profile.displayName ? (
             <>
-                {loading ? <Loading src={user.photoURL}></Loading> 
-                : <Loading.ReleaseBody></Loading.ReleaseBody>}
+                {loading ? <Loading src={user.photoURL}></Loading> : <Loading.ReleaseBody></Loading.ReleaseBody>}
+
                 <Header src="joker1" dontShowOnSmallViewPort>
                     <Header.Frame>
                         <Header.Group>
@@ -32,13 +32,14 @@ const BrowserContainer = ( {slides }) => {
                             <Header.TextLink>Series</Header.TextLink>
                             <Header.TextLink>Films</Header.TextLink>
                         </Header.Group>
-                        <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
                         <Header.Group>
+                            <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                             <Header.Profile>
                                 <Header.Picture src={user.photoURL}/>
                                 <Header.Dropdown>
                                     <Header.Group>
-                                        <Header.Picture src={user.photoURL}></Header.Picture>
+                                        <Header.Picture src={user.photoURL}/>
                                         <Header.TextLink>{user.displayName}</Header.TextLink>
                                     </Header.Group>
                                     <Header.Group>
@@ -48,6 +49,7 @@ const BrowserContainer = ( {slides }) => {
                             </Header.Profile>
                         </Header.Group>
                     </Header.Frame>
+                    
                     <Header.Feature>
                         <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
                         <Header.Text>

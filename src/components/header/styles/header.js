@@ -121,7 +121,7 @@ export const Dropdown = styled.div`
   position: absolute;
   background-color: black;
   padding: 10px;
-  width: 100px;
+  width: 120px;
   top: 32px;
   right: 10px;
   ${Group}:last-of-type ${Link} {
@@ -140,12 +140,12 @@ export const Dropdown = styled.div`
     }
   }
   button {
-    margin-right: 10px;
   }
   p {
     font-size: 12px;
     margin-bottom: 0;
     margin-top: 0;
+    margin-left: 10px;
   }
 `;
 
