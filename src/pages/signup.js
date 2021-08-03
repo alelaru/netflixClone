@@ -37,7 +37,6 @@ const Signup = () => {
             setFirstName("")
             setError(error.message)
         })
-        
     }
 
     return ( 
