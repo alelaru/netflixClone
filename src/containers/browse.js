@@ -9,6 +9,7 @@ import logo from "../logo.svg"
 import Card from "../components/card";
 import Player from "../components/player";
 
+import Fuse from "fuse.js"
 
 const BrowserContainer = ( {slides }) => {
     const [category, setCategory] = useState("series")
@@ -31,6 +32,18 @@ const BrowserContainer = ( {slides }) => {
         setSlideRows(slides[category]);
     }, [slides, category]);
 
+    useEffect(() => {
+        const fuse = new Fuse(slideRows, { keys: ["data.description", "data.title", "data.genre"]})
+        const results = fuse.search(searchTerm).map(({item}) => item)
+
+        if(slideRows.length > 0 && searchTerm.length > 3 && results.length > 0 ){
+            setSlideRows(results);
+        }
+        else{
+            setSlideRows(slides[category]);
+        }
+
+    }, [searchTerm]);
 
     return (  profile.displayName ? (
             <>
@@ -88,6 +101,7 @@ const BrowserContainer = ( {slides }) => {
                                    </Card.Item> 
                                 ))}
                             </Card.Entities>
+
                             <Card.Feature category={category}>
                                 <Player>
                                     <Player.Button></Player.Button>
