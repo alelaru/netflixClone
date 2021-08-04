@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import Header from "../components/header";
+import {FooterContainer} from "./footer"
 import Loading from "../components/loading";
 import FirebaseContext from "../context/firebase";
 import SelectProfileContainer from "./profiles";
 import * as ROUTES from "../constants/routes"
 import logo from "../logo.svg"
 import Card from "../components/card";
+import Player from "../components/player";
+
 
 const BrowserContainer = ( {slides }) => {
     const [category, setCategory] = useState("series")
@@ -86,15 +89,15 @@ const BrowserContainer = ( {slides }) => {
                                 ))}
                             </Card.Entities>
                             <Card.Feature category={category}>
-                                <p>Hello</p>
-                                {/* <Player>
+                                <Player>
                                     <Player.Button></Player.Button>
-                                    <Player.Video src="/videos/bunny.mp4"></Player.Video>
-                                </Player> */}
+                                    <Player.Video src="/videos/bunny.mp4" />
+                                </Player>
                             </Card.Feature>
                         </Card>
                     ))}
                 </Card.Group>
+                <FooterContainer/>
             </>
         ) : <SelectProfileContainer user={user} setProfile={setProfile}></SelectProfileContainer>
 

@@ -1,18 +1,14 @@
 import { Container, Title, Subtitle } from "./styles/feature";
 
 
-const Feature = ( {children, ...restProps}) => {
-    return ( <Container {...restProps} >{children}</Container>
-     );
-}
- 
-export default Feature; 
-
-Feature.Title = function FeatureTitle({...restProps}){
-    return <Title {...restProps}></Title>
-}
-
-Feature.Subtitle = function FeatureSubtitle({...restProps}){
-    return <Subtitle {...restProps}></Subtitle>
-}
-
+export default function Feature({ children, ...restProps }) {
+    return <Container {...restProps}>{children}</Container>;
+  }
+  
+  Feature.Title = function FeatureTitle({ children, ...restProps }) {
+    return <Title {...restProps}>{children}</Title>;
+  };
+  
+  Feature.SubTitle = function FeatureSubTitle({ children, ...restProps }) {
+    return <Subtitle {...restProps}>{children}</Subtitle>;
+  };
