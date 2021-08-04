@@ -49,7 +49,7 @@ const BrowserContainer = ( {slides }) => {
                             </Header.Profile>
                         </Header.Group>
                     </Header.Frame>
-                    
+
                     <Header.Feature>
                         <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
                         <Header.Text>
@@ -57,6 +57,7 @@ const BrowserContainer = ( {slides }) => {
                             City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
                             futile attempt to feel like he's part of the world around him.
                         </Header.Text>
+                        <Header.PlayButton>Play</Header.PlayButton>
                     </Header.Feature>
                     <p>Hello</p>
                 </Header>
