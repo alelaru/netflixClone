@@ -5,11 +5,15 @@ import FirebaseContext from "../context/firebase";
 import SelectProfileContainer from "./profiles";
 import * as ROUTES from "../constants/routes"
 import logo from "../logo.svg"
+import Card from "../components/card";
 
 const BrowserContainer = ( {slides }) => {
+    const [category, setCategory] = useState("series")
     const [searchTerm, setSearchTerm] = useState("")
     const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState(true);
+    const [slideRows, setSlideRows] = useState([]) 
+
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
 
@@ -20,6 +24,10 @@ const BrowserContainer = ( {slides }) => {
     
     }, [profile.displayName]);
 
+    useEffect(() => {
+        setSlideRows(slides[category]);
+    }, [slides, category]);
+
 
     return (  profile.displayName ? (
             <>
@@ -29,8 +37,8 @@ const BrowserContainer = ( {slides }) => {
                     <Header.Frame>
                         <Header.Group>
                             <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix"></Header.Logo>
-                            <Header.TextLink>Series</Header.TextLink>
-                            <Header.TextLink>Films</Header.TextLink>
+                            <Header.TextLink active={category === "series" ? 'true' : 'false'} onClick={() => setCategory("series")}>Series</Header.TextLink>
+                            <Header.TextLink active={category === "films" ? 'true' : 'false'} onClick={() => setCategory("films")}>Films</Header.TextLink>
                         </Header.Group>
 
                         <Header.Group>
@@ -59,8 +67,11 @@ const BrowserContainer = ( {slides }) => {
                         </Header.Text>
                         <Header.PlayButton>Play</Header.PlayButton>
                     </Header.Feature>
-                    <p>Hello</p>
                 </Header>
+
+                <Card.Group>
+
+                </Card.Group>
             </>
         ) : <SelectProfileContainer user={user} setProfile={setProfile}></SelectProfileContainer>
 
