@@ -10,12 +10,15 @@ import Feature from "../components/feature"
 
 
 export default function Home() {
+
+  console.log("IM INSIDE BITCHES");
+
   return (
     <>
         <HeaderContainer>
             <Feature>
               <Feature.Title>Unlimited films, tv, programs and more</Feature.Title>
-              <Feature.Subtitle>Watch anywhere and cancel anytime</Feature.Subtitle>
+              <Feature.SubTitle>Watch anywhere and cancel anytime</Feature.SubTitle>
               <OptForm>
                 <OptForm.Input placeholder="Email address" />
                 <OptForm.Button>Try it now</OptForm.Button>
