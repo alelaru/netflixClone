@@ -1,10 +1,10 @@
 import { fireEvent, render } from "@testing-library/react"
-import Player from "../components/player"
+import Player from "../../components/player";
 
 
 describe("<Player/>", () => {
 
-    it("renders the player with a bunni video", () => {
+    it("renders the player with a bunny video", () => {
         const {container, getByText, queryByTestId} = render(
             <Player>
                 <Player.Button></Player.Button>
