@@ -10,9 +10,8 @@ describe("<Form/>", () => {
 
     it("Renders the <Form/> with populated data", () => {
         const {container, getByText, queryByText, getByPlaceholderText, debug} = render(
-            // <Router>
                 <Form>
-                    <Form.Title>Sign In</Form.Title>
+                    <Form.Title>Sign In Now</Form.Title>
                     {/* {error && <Form.Error>{error}</Form.Error>} */}
                     {/* The on Submit we get rid of them */}
                     <Form.Base>
@@ -27,16 +26,28 @@ describe("<Form/>", () => {
                         This page is protected by Google Recaptcha to ensure you are not a bot
                     </Form.TextSmall>
                 </Form>     
-
-            // </Router> 
-
-          
-
         ) 
-        debug();
 
         expect(queryByText("This page is protected by Google Recaptcha to ensure you are not a bot")).toBeTruthy();
+        expect(getByText("Sign In Now")).toBeTruthy();
+        expect(getByText("Sign In")).toBeTruthy();
+        expect(getByText("Sign In").disabled).toBeTruthy();
+        expect(getByPlaceholderText("Email Address")).toBeTruthy();
+        expect(getByPlaceholderText("Password")).toBeTruthy();
+        expect(container.firstChild).toMatchSnapshot();
+    })
 
+    it("Renders the <Form/> with an error", () => {
+        const {container, getByText, queryByText} = render(
+                <Form>
+                    <Form.Error>Your email address is already being used</Form.Error>
+                    <Form.Submit type="submit">Sign In</Form.Submit>
+                </Form>     
+        ) 
+
+        expect(queryByText("Your email address is already being used")).toBeTruthy();
+        expect(getByText("Sign In").disabled).toBeFalsy();
+        expect(container.firstChild).toMatchSnapshot();
     })
 
 })
