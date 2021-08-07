@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header/> renders the basic <Header /> with a background 1`] = `
+<div
+  class="header__Background-djltcn-0 kVQoGh"
+  data-testid="header-bg"
+>
+  <div
+    class="header__Container-djltcn-1 kWwxcc"
+  >
+    <a
+      href="/signin"
+    >
+      <img
+        alt="Netflix"
+        class="header__Logo-djltcn-14 WPFVX"
+        src="/logo.svg"
+      />
+    </a>
+    <p
+      class="header__Link-djltcn-2 bZQBhw"
+      to="/signin"
+    >
+      Hello I am a link!
+    </p>
+  </div>
+</div>
+`;
+
+exports[`<Header/> renders the basic <Header /> without a background 1`] = `
+<div
+  class="header__Container-djltcn-1 kWwxcc"
+>
+  <a
+    href="/"
+  >
+    <img
+      alt="Netflix"
+      class="header__Logo-djltcn-14 WPFVX"
+      src="images/karl.png"
+    />
+  </a>
+  <a
+    class="header__ButtonLink-djltcn-7 dUensT"
+    href="/signin"
+  >
+    Sign In
+  </a>
+  <p
+    class="header__Link-djltcn-2 bATiLY"
+    to="/signin"
+  >
+    Hello I am a link!
+  </p>
+</div>
+`;

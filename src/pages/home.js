@@ -11,8 +11,6 @@ import Feature from "../components/feature"
 
 export default function Home() {
 
-  console.log("IM INSIDE BITCHES");
-
   return (
     <>
         <HeaderContainer>

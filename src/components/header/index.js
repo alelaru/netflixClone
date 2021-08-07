@@ -5,7 +5,7 @@ import {Link as ReactRouterLink} from "react-router-dom";
 
 const Header = ( { bg = true, children, ...restProps} ) => {
     return ( 
-        bg ? <Background {...restProps}>{children}</Background> : children
+        bg ? <Background {...restProps} data-testid="header-bg">{children}</Background> : children
      );
 }
  
@@ -27,10 +27,10 @@ Header.Search = function HeaderSearch({searchTerm, setSearchTerm, ...restProps})
     const [searchActive, setsearchActive] = useState(false);
     return (
         <Search {...restProps}>
-            <SearchIcon onClick={() => setsearchActive(searchActive => !searchActive)}>
+            <SearchIcon onClick={() => setsearchActive(searchActive => !searchActive)} data-testid="search-click">
                 <img src={`/images/icons/search.png`} alt="search"></img>
             </SearchIcon>    
-            <SearchInput value={searchTerm} onChange={({target}) => setSearchTerm(target.value)} placeholder="Search films and series" active={searchActive}> 
+            <SearchInput value={searchTerm} onChange={({target}) => setSearchTerm(target.value)} placeholder="Search films and series" active={searchActive} data-testid="search-input"> 
             </SearchInput>
         </Search>
     )

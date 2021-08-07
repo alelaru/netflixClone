@@ -9,7 +9,7 @@ jest.mock("react-router-dom")
 describe("<Form/>", () => {
 
     it("Renders the <Form/> with populated data", () => {
-        const {container, getByText, queryByText, getByPlaceholderText, debug} = render(
+        const {container, getByText, queryByText, getByPlaceholderText} = render(
                 <Form>
                     <Form.Title>Sign In Now</Form.Title>
                     {/* {error && <Form.Error>{error}</Form.Error>} */}

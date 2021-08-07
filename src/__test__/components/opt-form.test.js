@@ -6,7 +6,7 @@ describe("<OptForm/>", () => {
 
     it("Renders the <OptForm/> with populated data", () => {
 
-        const {container, getByText, queryByText, getByPlaceholderText, debug} = render(
+        const {container, getByText, queryByText, getByPlaceholderText} = render(
             <OptForm>
                 <OptForm.Input placeholder="Email Address"></OptForm.Input>
                 <OptForm.Button>Try it now</OptForm.Button>
