@@ -1,0 +1,106 @@
+import { render, fireEvent } from "@testing-library/react";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { act } from "react-dom/test-utils"
+import Browse from "../../pages/browse";
+import FirebaseContext from "../../context/firebase";
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useHistory: () => ({}),
+}));
+
+describe("<Browse/>", () => {
+
+    beforeEach(() => {
+        jest.clearAllMocks();
+});
+
+const slides = [
+    {
+        "id": "c5e94490-a977-416f-9d50-d1dbeb15bbd5",
+        "genre": "documentaries",
+        "description": "Director Morgan Spurlock's social experiment in fast-food gastronomy sees him attempting to subsist uniquely on food from the McDonalds",
+        "title": "Super Size Me",
+        "slug": "super-size-me",
+        "maturity": "12",
+        "docId": "7TyvOGYntmIH1BzvoVwG"
+    },
+    {
+        "id": "cead75fd-6db4-448d-ba48-2fdf07ab9cd7",
+        "slug": "school-of-rock",
+        "description": "Dewey Finn, an amateur rock enthusiast, slyly takes up his friend's substitute teacher's job. Bearing no qualifications for it, he instead starts training the students to form a band.",
+        "genre": "feel-good",
+        "maturity": "12",
+        "title": "School of Rock",
+        "docId": "AHwmnDKs3cD20SMaC58j"
+    },
+    {
+        "title": "Midnight In Paris",
+        "description": "Gil arrives with his fiancee and her family in Paris for a vacation, even as he tries to finish his debut novel. He is beguiled by the city, which takes him to a time past, away from his fiancee.",
+        "slug": "midnight-in-paris",
+        "genre": "feel-good",
+        "id": "566c8cb5-88d6-4925-9686-56da33f821a2",
+        "maturity": "12",
+        "docId": "EeOBMnDl0r2QauKspXF9"
+    }
+]
+
+it('renders the Browse page with the info', async () => {
+    // const succeededToSignUp = jest.fn(() => 
+    //     Promise.resolve({ user: 
+    //         { updateProfile: jest.fn(() => 
+    //             Promise.resolve("I am signed up")
+    //         )} 
+    //     })
+    // )
+    const firebase = {
+      auth: jest.fn(() => ({
+        currentUser: {user: {}}
+      }))
+    };
+
+    // console.log("Aquí firebas createUsername",firebase.auth().createUserWithEmailAndPassword())
+
+    console.log(firebase.auth().currentUser);
+
+    const { getByText, getByPlaceholderText, queryByTestId, getByTestId, debug } = render(
+
+      <Router>
+          <FirebaseContext.Provider 
+            value={{firebase: {
+                auth: jest.fn(() => ({
+                    currentUser: {user: {}}
+                }))
+            }}}>
+            <Browse></Browse>
+          </FirebaseContext.Provider>
+    </Router>
+    );
+
+    expect(getByText("Director Morgan Spurlock's social experiment in fast-food gastronomy sees him attempting to subsist uniquely on food from the McDonalds")).toBeTruthy();
+
+    // await act(async () => {
+    //     await fireEvent.change(getByPlaceholderText("First Name"), {target: { value: "Alejandro" }});
+    //     await fireEvent.change(getByPlaceholderText("Email Address"), {target: { value: "alelaru@gmail.com" }});
+    //     await fireEvent.change(getByPlaceholderText('Password'), { target: { value: 'password' } });
+    //     // fireEvent.click(getByTestId("sign-up"))
+
+    //     expect(getByPlaceholderText("Email Address").value).toBe("alelaru@gmail.com")
+    //     expect(getByPlaceholderText("Password").value).toBe("password")
+    //     expect(getByPlaceholderText("First Name").value).toBe("Alejandro")
+
+    //     expect(queryByTestId("error")).toBeFalsy();
+
+        // debug();
+
+    })
+    // expect(getByText('Unlimited films, tv, programs and more')).toBeTruthy();
+    // expect(getByText('Watch anywhere and cancel anytime')).toBeTruthy();
+    // expect(getAllByPlaceholderText('Email address')).toBeTruthy();
+    // expect(getAllByText('Try it now')).toBeTruthy();
+
+    // })
+
+})
+
+

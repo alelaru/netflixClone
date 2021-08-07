@@ -50,7 +50,7 @@ const Signup = () => {
                 <Form.Input placeholder="First Name" value={firstName} onChange={({target}) => setFirstName(target.value)}></Form.Input>
                 <Form.Input placeholder="Email Address" value={emailAddress} onChange={({target}) => setEmailAddress(target.value)}></Form.Input>
                 <Form.Input type="password" autocomplete="off" placeholder="Password" value={password} onChange={({target}) => setPassword(target.value)}></Form.Input>
-                <Form.Submit disabled={isInvalid} type="submit">Sign Up</Form.Submit>
+                <Form.Submit disabled={isInvalid} type="submit" data-testid="sign-up">Sign Up</Form.Submit>
 
                 <Form.Text>Already a User? <Form.Link to={ROUTES.SIGNIN}>Sign in now.</Form.Link></Form.Text>
                 <Form.TextSmall>This page is protected by Google Recaptcha to ensure you are not a bot</Form.TextSmall>

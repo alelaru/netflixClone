@@ -7,6 +7,7 @@ const Browse = () => {
     //We need the series and the films
     const { series } = useContent("series");
     const { films } = useContent("films");
+    
 
     //We need slides we added the genre
     const slides = selectionFilter({series, films})

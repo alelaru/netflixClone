@@ -45,11 +45,11 @@ const SignIn = () => {
         <HeaderContainer>
             <Form>
                 <Form.Title>Sign In</Form.Title>
-                {error && <Form.Error>{error}</Form.Error>}
+                {error && <Form.Error data-testid="error">{error}</Form.Error>}
                 <Form.Base onSubmit={handleSignIn} method="POST">
                     <Form.Input placeholder="Email Address" value={emailAddress} onChange={({target}) => setEmailAddress(target.value)}></Form.Input>
                     <Form.Input placeholder="Password" autocomplete="off" type="password" value={password} onChange={({target}) => setPassword(target.value)}></Form.Input>
-                    <Form.Submit disabled={isInvalid} type="submit">Sign In</Form.Submit>
+                    <Form.Submit disabled={isInvalid} type="submit" data-testid="sign-in">Sign In</Form.Submit>
                 </Form.Base>
                 <Form.Text>
                     New to Netflix? <Form.Link to={ROUTES.SIGNUP}>Sign Up now.</Form.Link>

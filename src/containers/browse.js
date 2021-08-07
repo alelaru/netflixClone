@@ -21,6 +21,8 @@ const BrowserContainer = ( {slides }) => {
     const { firebase } = useContext(FirebaseContext);
     const user = firebase.auth().currentUser || {};
 
+    console.log(user);
+
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
